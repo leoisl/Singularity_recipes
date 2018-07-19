@@ -15,17 +15,16 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-add-repository universe
     apt-get update
     apt-get install -y \
-      wget \
       build-essential \
       git \
-      zlib1g-dev \
       libbz2-dev \
       liblzma-dev \
-      python-dev \
-      python-pip \
+      libncurses5-dev \
       python3-dev \
       python3-pip \
-      python3-setuptools
+      python3-setuptools \
+      wget \
+      zlib1g-dev
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
@@ -37,23 +36,25 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     VERSION="1.9"
     wget https://github.com/samtools/samtools/releases/download/"$VERSION"/samtools-"$VERSION".tar.bz2
     tar xjf samtools-"$VERSION".tar.bz2 
-    cd samtools-"$VERISON" 
+    rm samtools*.tar.bz2
+    cd samtools*
     ./configure 
     make 
     make install 
     cd .. 
-    rm -rf samtools-"$VERSION"*
+    rm -rf samtools-*
 
     #================================
     # INSTALL BWA
     #================================
-    $VERSION="0.7.17"
-    wget https://github.com/lh3/bwa/releases/download/v"$VERISON"/bwa-"$VERSION".tar.bz2
+    VERSION="0.7.17"
+    wget https://github.com/lh3/bwa/releases/download/"v"$VERSION/bwa-$VERSION.tar.bz2
     tar xf bwa-"$VERSION".tar.bz2
-    cd bwa-"$VERSION"/
+    rm bwa-"$VERSION".tar.bz2
+    cd bwa-*
     make
-    cd ..
     ln -s $(realpath bwa) /usr/local/bin/bwa
+    cd ..
     
     #================================
     # INSTALL PYTHON PACKAGES
