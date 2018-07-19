@@ -14,9 +14,10 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get install -y software-properties-common
     apt-add-repository universe
     apt-get update
-    apt-get install -y wget build-essential
-    apt-get install openjdk-8-jre
-    apt-get install gnuplot rlwrap
+    apt-get install -y \
+      wget build-essential \
+      openjdk-8-jre \
+      gnuplot
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
