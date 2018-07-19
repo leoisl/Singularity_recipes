@@ -33,5 +33,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm v$VERSION.tar.gz
     cd canu-${VERSION}/src
     make
+    ln -s $(realpath /root/canu-1.7/Linux-amd64/bin/canu) /usr/local/bin/canu
+    cd ..
     which canu
     
