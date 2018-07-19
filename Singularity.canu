@@ -7,7 +7,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
   Run `singularity exec canu.simg canu`
 
 %environment
-  PATH=/usr/local/bin:$PATH
+  PATH=/usr/local/bin:/root/canu-1.7/Linux-amd64/bin:$PATH
 
 %post
     apt-get update
@@ -33,5 +33,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm v$VERSION.tar.gz
     cd canu-${VERSION}/src
     make
-    ln -s $(realpath /root/canu-1.7/Linux-amd64/bin/canu) /usr/local/bin/canu    
+    which canu
     
