@@ -1,0 +1,81 @@
+Bootstrap: debootstrap
+OSVersion: bionic
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+%help
+  A container to hold the variant calling and polishing tool nanopolish.
+  Run `singularity exec nanopolish.simg canu`
+
+%environment
+  PATH=/usr/local/bin:$PATH
+
+%post
+    apt-get update
+    apt-get install -y software-properties-common
+    apt-add-repository universe
+    apt-get update
+    apt-get install -y \
+      build-essential \
+      cmake \
+      git \
+      gnuplot \
+      graphviz \
+      openjdk-8-jre \
+      libbz2-dev \
+      liblzma-dev \
+      libncurses5-dev \
+      libncursesw5-dev \
+      python3-dev \
+      python3-pip \
+      python3-setuptools \
+      python3-venv \
+      wget \
+      zlib1g-dev
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
+    echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
+    echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
+
+    #================================
+    # INSTALL BWA
+    #================================
+    VERSION="0.7.17"
+    wget https://github.com/lh3/bwa/releases/download/"v"$VERSION/bwa-$VERSION.tar.bz2
+    tar xf bwa-"$VERSION".tar.bz2
+    rm bwa-"$VERSION".tar.bz2
+    cd bwa-*
+    make
+    export PATH=$PWD:$PATH
+    cd ..
+
+    #================================
+    # INSTALL NEXTFLOW
+    #================================
+    wget -qO- https://get.nextflow.io | bash
+    mv nextflow /usr/local/bin
+
+    #================================
+    # INSTALL MUMMER
+    #================================
+    wget https://sourceforge.net/projects/mummer/files/mummer/3.23/MUMmer3.23.tar.gz
+    tar xvf MUMmer3.23.tar.gz
+    cd MUMmer3.23
+    make install
+    export PATH=$PWD:$PATH
+    cd ..
+    rm MUMmer3.23.tar.gz
+
+    #================================
+    # INSTALL GRAMTOOLS
+    #================================
+    python3 -m venv gram_ve && source gram_ve/bin/activate
+    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools &> log_install_gramtools.txt
+
+    #================================
+    # INSTALL MINOS
+    #================================
+    git clone https://github.com/rmcolq/minos.git
+    cd minos
+    export PATH=$PWD/scripts/:$PATH
+    export PYTHONPATH=$PWD/:$PYTHONPATH
+    python3 setup.py test
