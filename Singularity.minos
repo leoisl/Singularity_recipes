@@ -46,7 +46,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm bwa-"$VERSION".tar.bz2
     cd bwa-*
     make
-    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     export PATH=$PWD:$PATH
     cd ..
 
@@ -63,7 +62,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     tar xvf MUMmer3.23.tar.gz
     cd MUMmer3.23
     make install
-    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     export PATH=$PWD:$PATH
     cd ..
     rm MUMmer3.23.tar.gz
@@ -80,7 +78,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     git clone https://github.com/rmcolq/minos.git
     cd minos
-    export PATH=$PWD/scripts/:$PATH
-    export PYTHONPATH=$PWD/:$PYTHONPATH
     echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
