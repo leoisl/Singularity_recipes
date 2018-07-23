@@ -1,0 +1,37 @@
+Bootstrap: debootstrap
+OSVersion: bionic
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+%help
+  A container to hold the assembler canu.
+  Run `singularity exec canu.simg canu`
+
+%environment
+  PATH=/usr/local/bin:$PATH
+
+%post
+    apt-get update
+    apt-get install -y software-properties-common
+    apt-add-repository universe
+    apt-get update
+    apt-get install -y \
+      build-essential \
+      wget
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
+    echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
+    echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
+
+
+    #============================================
+    # INSTALL SNIPPY
+    #============================================
+    VERSION="3.2"
+    wget https://github.com/tseemann/snippy/archive/v"$VERSION".tar.gz
+    tar xzf v$VERSION.tar.gz
+    rm v$VERSION.tar.gz
+    which cpan
+    cpan File::Slurp
+    cpan Bio::SeqIO
+    cd /snippy*/bin
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
