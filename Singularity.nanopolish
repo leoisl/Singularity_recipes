@@ -54,7 +54,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm bwa-"$VERSION".tar.bz2
     cd bwa-*
     make
+    ln -s $(realpath bwa) /usr/local/bin/bwa
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo $PATH
     cd ..
     
     #================================
@@ -70,5 +72,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd nanopolish
     git checkout v"$VERSION"
     make
+    ln -s $(realpath nanopolish) /usr/local/bin/nanopolish
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo $PATH
     echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo $PATH
