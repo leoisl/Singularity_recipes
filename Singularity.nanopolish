@@ -55,6 +55,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd bwa-*
     make
     export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
     
     #================================
@@ -71,5 +72,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     git checkout v"$VERSION"
     make
     export PATH=$PWD:$PATH
+    export PATH=$PWD/scripts:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
     
