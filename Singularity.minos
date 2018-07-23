@@ -15,6 +15,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-add-repository universe
     apt-get update
     apt-get install -y \
+      automake \
       build-essential \
       cmake \
       git \
@@ -45,6 +46,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm bwa-"$VERSION".tar.bz2
     cd bwa-*
     make
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     export PATH=$PWD:$PATH
     cd ..
 
@@ -61,6 +63,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     tar xvf MUMmer3.23.tar.gz
     cd MUMmer3.23
     make install
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     export PATH=$PWD:$PATH
     cd ..
     rm MUMmer3.23.tar.gz
@@ -68,7 +71,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     # INSTALL GRAMTOOLS
     #================================
-    python3 -m venv gram_ve && source gram_ve/bin/activate
+    python3 -m venv gram_ve
+    source gram_ve/bin/activate
     pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools &> log_install_gramtools.txt
 
     #================================
@@ -78,4 +82,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd minos
     export PATH=$PWD/scripts/:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
+    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
