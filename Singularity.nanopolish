@@ -4,7 +4,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %help
   A container to hold the variant calling and polishing tool nanopolish.
-  Run `singularity exec nanopolish.simg canu`
+  Run `singularity exec nanopolish.simg nanopolish`
 
 %environment
   PATH=/usr/local/bin:$PATH
