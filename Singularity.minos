@@ -3,8 +3,8 @@ OSVersion: bionic
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %help
-  A container to hold the variant calling and polishing tool nanopolish.
-  Run `singularity exec nanopolish.simg canu`
+  A container to hold the vcf adjudicator minos.
+  Run `singularity exec minos.simg minos`
 
 %environment
   PATH=/usr/local/bin:$PATH
@@ -47,6 +47,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd bwa-*
     make
     export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
 
     #================================
@@ -63,6 +64,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd MUMmer3.23
     make install
     export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
     rm MUMmer3.23.tar.gz
 
@@ -70,14 +72,16 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     # INSTALL GRAMTOOLS
     #================================
     python3 -m venv gram_ve
-    source gram_ve/bin/activate
-    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools &> log_install_gramtools.txt
+    . gram_ve/bin/activate
+    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools
 
     #================================
     # INSTALL MINOS
     #================================
     git clone https://github.com/rmcolq/minos.git
     cd minos
+    export PATH=$PWD/scripts:$PATH
+    export PYTHONPATH=$PWD/:$PYTHONPATH
     echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
