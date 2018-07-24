@@ -70,13 +70,18 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
     rm MUMmer3.23.tar.gz
-
+ 
     #================================
     # INSTALL GRAMTOOLS
     #================================
     python3 -m venv gram_ve
     . gram_ve/bin/activate
     pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools
+    
+    #================================
+    # INSTALL PYTHON PACKAGES
+    #================================
+    pip3 install pysam pandas matplotlib seaborn pymummer
 
     #================================
     # INSTALL MINOS
