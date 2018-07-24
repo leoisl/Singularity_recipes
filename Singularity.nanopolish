@@ -70,7 +70,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     git clone --recursive https://github.com/jts/nanopolish.git
     cd nanopolish
     git checkout v"$VERSION"
-    make
+    make clean && make
     export PATH=$PWD:$PATH
     export PATH=$PWD/scripts:$PATH
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
