@@ -86,7 +86,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     # INSTALL MINOS
     #================================
-    git clone https://github.com/rmcolq/minos.git
+    git clone -b add_allow_ref_alleles_option https://github.com/rmcolq/minos.git
     cd minos
     export PATH=$PWD/scripts:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
