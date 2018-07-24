@@ -17,12 +17,22 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get install -y \
       build-essential \
       cmake \
-      git
+      git \
+      wget
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
     echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
 
+    #============================================
+    # INSTALL MINIMAP2
+    #============================================
+    VERSION="2.11"
+    wget https://github.com/lh3/minimap2/releases/download/v"$VERSION"/minimap2-"$VERSION".tar.bz2
+    tar jxvf minimap2-"$VERSION".tar.bz2
+    rm minimap2-"$VERSION".tar.bz2
+    cd minimap2-*
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
 
     #============================================
     # INSTALL SNIPPY
