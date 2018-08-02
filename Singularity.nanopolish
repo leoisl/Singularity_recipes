@@ -58,6 +58,17 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
     
+    #============================================
+    # INSTALL MINIMAP2
+    #============================================
+    VERSION="2.11"
+    wget https://github.com/lh3/minimap2/releases/download/v"$VERSION"/minimap2-"$VERSION".tar.bz2
+    tar jxvf minimap2-"$VERSION".tar.bz2
+    rm minimap2-"$VERSION".tar.bz2
+    cd minimap2-*
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    cd ..
+    
     #================================
     # INSTALL PYTHON PACKAGES
     #================================
