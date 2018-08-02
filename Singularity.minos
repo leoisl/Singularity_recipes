@@ -82,6 +82,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     # INSTALL PYTHON PACKAGES
     #================================
     pip3 install pysam pandas matplotlib seaborn pymummer
+    pip3 install --upgrade matplotlib
+    echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
 
     #================================
     # INSTALL MINOS
