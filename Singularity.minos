@@ -83,6 +83,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     pip3 install pysam pandas matplotlib seaborn pymummer
     pip3 install --upgrade matplotlib
+    mkdir -p ~/.matplotlib
     echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
 
     #================================
