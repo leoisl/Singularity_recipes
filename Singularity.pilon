@@ -19,7 +19,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       cmake \
       git \
       openjdk-8-jre \
-      wget
+      wget \
+      zlib1g-dev
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
@@ -29,11 +30,12 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     # INSTALL MINIMAP2
     #============================================
     VERSION="2.11"
-    wget https://github.com/lh3/minimap2/releases/download/v"$VERSION"/minimap2-"$VERSION".tar.bz2
-    tar jxvf minimap2-"$VERSION".tar.bz2
-    rm minimap2-"$VERSION".tar.bz2
+    wget https://github.com/lh3/minimap2/archive/v"$VERSION".tar.gz
+    tar xzf v"$VERSION".tar.gz
+    rm v"$VERSION".tar.gz
     cd minimap2-*
-    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    make
+    echo "export PATH=$PWD:$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
     
     #================================
