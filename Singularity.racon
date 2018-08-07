@@ -18,8 +18,12 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       build-essential \
       cmake \
       git \
+      libbz2-dev \
+      liblzma-dev \
+      libncurses-dev \
+      openjdk-8-jre \
       wget \
-      zlib
+      zlib1g-dev
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
