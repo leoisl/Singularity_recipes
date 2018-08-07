@@ -28,14 +28,15 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     # INSTALL MINIMAP2
     #============================================
     VERSION="2.11"
-    wget https://github.com/lh3/minimap2/releases/download/v"$VERSION"/minimap2-"$VERSION".tar.bz2
-    tar jxvf minimap2-"$VERSION".tar.bz2
-    rm minimap2-"$VERSION".tar.bz2
+    wget https://github.com/lh3/minimap2/archive/v"$VERSION".tar.gz
+    tar xzf v"$VERSION".tar.gz
+    rm minimap2-"$VERSION".tar.gz
     cd minimap2-*
-    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PATH=$PWD:$PATH" >> $SINGULARITY_ENVIRONMENT
+    cd ..
 
     #============================================
-    # INSTALL SNIPPY
+    # INSTALL RACON
     #============================================
     git clone --recursive https://github.com/isovic/racon.git racon
     cd racon
