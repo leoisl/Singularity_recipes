@@ -18,7 +18,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       build-essential \
       cmake \
       git \
-      wget
+      wget \
+      zlib
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
