@@ -19,6 +19,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       cmake \
       git \
       libbz2-dev \
+      liblzma-dev \
       libncurses-dev \
       openjdk-8-jre \
       wget \
