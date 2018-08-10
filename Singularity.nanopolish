@@ -16,6 +16,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get update
     apt-get install -y \
       build-essential \
+      cmake \
       git \
       libbz2-dev \
       liblzma-dev \
@@ -67,7 +68,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm v"$VERSION".tar.gz
     cd minimap2-*
     make
-    echo "export PATH=$PWD:$PATH" >> $SINGULARITY_ENVIRONMENT
+    export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
     
     #================================
