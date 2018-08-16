@@ -22,6 +22,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       libbz2-dev \
       libgd-gd2-perl \
       libfile-slurp-perl \
+      lzma-dev \
       openjdk-8-jre \
       pkg-config \
       wget \
