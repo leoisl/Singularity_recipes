@@ -19,6 +19,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       build-essential \
       git \
       graphviz \
+      libbz2-dev \
       libgd-gd2-perl \
       libfile-slurp-perl \
       openjdk-8-jre \
