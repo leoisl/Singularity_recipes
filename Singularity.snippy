@@ -23,7 +23,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       libfile-slurp-perl \
       openjdk-8-jre \
       pkg-config \
-      wget
+      wget \
+      zlib1g-dev
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
