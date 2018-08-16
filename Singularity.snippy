@@ -17,6 +17,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get install -y \
       bioperl \
       build-essential \
+      git \
       graphviz \
       libgd-gd2-perl \
       libfile-slurp-perl \
@@ -28,6 +29,13 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
     echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
 
+    #============================================
+    # INSTALL FREEBAYES
+    #============================================
+    git clone --recursive git://github.com/ekg/freebayes.git
+    cd freebayes
+    make
+    make install
 
     #============================================
     # INSTALL SNIPPY
