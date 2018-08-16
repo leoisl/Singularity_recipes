@@ -20,6 +20,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       graphviz \
       libgd-gd2-perl \
       libfile-slurp-perl \
+      openjdk-8-jre \
       pkg-config \
       wget
     export LC_ALL=C.UTF-8
