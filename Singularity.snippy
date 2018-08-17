@@ -52,3 +52,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm v$VERSION.tar.gz
     cd snippy*/bin
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    
+    
