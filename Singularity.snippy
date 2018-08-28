@@ -42,6 +42,20 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd freebayes
     make
     make install
+    cd ..
+    
+    #============================================
+    # INSTALL MINIMAP2
+    #============================================
+    VERSION="2.11"
+    wget https://github.com/lh3/minimap2/archive/v"$VERSION".tar.gz
+    tar xzf v"$VERSION".tar.gz
+    rm v"$VERSION".tar.gz
+    cd minimap2-*
+    make
+    export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    cd ..
 
     #============================================
     # INSTALL SNIPPY
