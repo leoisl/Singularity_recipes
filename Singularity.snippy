@@ -29,6 +29,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       openjdk-8-jre \
       pkg-config \
       seqtk \
+      snp-sites \
       wget \
       zlib1g-dev
     export LC_ALL=C.UTF-8
