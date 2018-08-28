@@ -28,6 +28,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       lzma-dev \
       openjdk-8-jre \
       pkg-config \
+      seqtk \
       wget \
       zlib1g-dev
     export LC_ALL=C.UTF-8
