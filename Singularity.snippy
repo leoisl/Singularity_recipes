@@ -24,8 +24,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       graphviz \
       libbz2-dev \
       libhts-dev \
-      libcurl3 \
-      libcurl3-dev \
+      libcurl4 \
       libncurses5-dev \
       libncursesw5-dev \
       libgd-gd2-perl \
