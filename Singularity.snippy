@@ -60,6 +60,17 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd ..
 
     #============================================
+    # INSTALL VT
+    #============================================
+    git clone https://github.com/atks/vt.git
+    cd vt
+    make
+    make test
+    export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    cd ..
+    
+    #============================================
     # INSTALL SNIPPY
     #============================================
     VERSION="4.0.5"
