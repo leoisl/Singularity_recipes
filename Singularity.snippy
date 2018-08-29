@@ -17,6 +17,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get install -y \
       bioperl \
       build-essential \
+      curl \
       git \
       graphviz \
       libbz2-dev \
@@ -25,6 +26,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       libncursesw5-dev \
       libgd-gd2-perl \
       libfile-slurp-perl \
+      libssl-dev \
       lzma-dev \
       openjdk-8-jre \
       pkg-config \
