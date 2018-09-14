@@ -34,6 +34,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       python3-setuptools \
       python3-tk \
       python3-venv \
+      samtools \
+      vcftools \
       wget \
       zlib1g-dev
     export LC_ALL=C.UTF-8
