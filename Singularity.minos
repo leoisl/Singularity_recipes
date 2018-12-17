@@ -102,9 +102,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     
     git clone -b add_allow_ref_alleles_option https://github.com/rmcolq/minos.git
     cd minos
-    #export PATH=$PWD/scripts:$PATH
-    #export PYTHONPATH=$PWD/:$PYTHONPATH
-    #echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    #echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
-    python3 setup.py install
+    export PATH=$PWD/scripts:$PATH
+    export PYTHONPATH=$PWD/:$PYTHONPATH
+    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
