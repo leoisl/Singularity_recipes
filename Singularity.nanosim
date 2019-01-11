@@ -68,4 +68,10 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm v$VERSION.tar.gz
     cd NanoSim*
     pip3 install -r requirements.txt
+    cd src
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    
+    # Get the 2D reads
+    wget ftp://ftp.bcgsc.ca/supplementary/NanoSim/ecoli_UCSC_phase1b_2D.fasta
+    # Get the reference genome
+    wget ftp://ftp.bcgsc.ca/supplementary/NanoSim/ecoli_K12_MG1655_ref.fa
