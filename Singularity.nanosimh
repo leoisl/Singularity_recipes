@@ -51,6 +51,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #============================================
     git clone https://github.com/karel-brinda/nanosim-h
     cd nanosim-h
-    pip install --upgrade .
+    pip3 install --upgrade .
 
 
