@@ -51,3 +51,4 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #============================================
     wget https://www.niehs.nih.gov/research/resources/assets/docs/artbinmountrainier2016.06.05linux64.tgz
     tar xzf artbinmountrainier2016.06.05linux64.tgz
+    echo "export PATH=/art_bin_MountRainier/:$PATH" >> $SINGULARITY_ENVIRONMENT
