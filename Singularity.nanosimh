@@ -53,5 +53,3 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd nanosim-h
     #pip3 install --upgrade .
     python3 setup.py install
-
-
