@@ -105,9 +105,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     git clone https://github.com/iqbal-lab-org/minos.git
     cd minos
     git checkout 4bc857050714eaefe279c42df02fc971a73ccdbd
-    #export PATH=$PWD/scripts:$PATH
-    #export PYTHONPATH=$PWD/:$PYTHONPATH
-    #echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    #echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
+    export PATH=$PWD/scripts:$PATH
+    export PYTHONPATH=$PWD/:$PYTHONPATH
+    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
     python3 setup.py install
