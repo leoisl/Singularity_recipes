@@ -99,12 +99,15 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd cluster_vcf_records
     git checkout 46c43d1a5ea104395be7b8de70f1616bdd4dd0cf
     python3 setup.py test
+    python3 setup.py install
     cd ..
     
-    git clone -b add_allow_ref_alleles_option https://github.com/rmcolq/minos.git
+    git clone https://github.com/iqbal-lab-org/minos.git
     cd minos
-    export PATH=$PWD/scripts:$PATH
-    export PYTHONPATH=$PWD/:$PYTHONPATH
-    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
+    git checkout 4bc857050714eaefe279c42df02fc971a73ccdbd
+    #export PATH=$PWD/scripts:$PATH
+    #export PYTHONPATH=$PWD/:$PYTHONPATH
+    #echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    #echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
+    python3 setup.py install
