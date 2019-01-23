@@ -11,15 +11,18 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %post
     apt-get update
-    apt-get upgrade -y
+    apt-get install -y software-properties-common
+    apt-add-repository universe
+    apt-get update
     apt-get install -y \
       git \
+      nano \
       python-pip \
       r-base \
       samtools \
       vim \
-      wget
-    apt-get autoremove \
+      wget \
+    && apt-get autoremove \
     && apt-get clean
       
     export LC_ALL=C.UTF-8
