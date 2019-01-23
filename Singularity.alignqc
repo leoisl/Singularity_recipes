@@ -1,0 +1,35 @@
+Bootstrap: debootstrap
+OSVersion: bionic
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+%help
+  A container to hold alignqc and samtools
+  Run `singularity exec minos.simg minos`
+
+%environment
+  PATH=/usr/local/bin:$PATH
+
+%post
+    apt-get update
+    apt-get upgrade -y
+    apt-get install -y \
+      git \
+      python-pip \
+      r-base \
+      samtools \
+      vim \
+      wget
+    apt-get autoremove \
+    && apt-get clean
+      
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
+    echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
+    echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
+
+    #================================
+    # INSTALL ALIGNQC
+    #================================
+    pip install --upgrade pip
+    pip install seq-tools==1.0.10
+    pip install AlignQC==2.0.5
