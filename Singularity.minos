@@ -102,9 +102,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     python3 setup.py install
     cd ..
     
-    git clone https://github.com/iqbal-lab-org/minos.git
+    git clone -b fix_mask https://github.com/rmcolq/minos.git
     cd minos
-    git checkout 4bc857050714eaefe279c42df02fc971a73ccdbd
+    git checkout 4538a8ef7a0614b1a3bfd53cddd816a6d7ce30cd
     export PATH=$PWD/scripts:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
     #echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
