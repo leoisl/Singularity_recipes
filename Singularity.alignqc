@@ -37,3 +37,4 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     pip install --upgrade pip
     pip install seq-tools==1.0.10
     pip install AlignQC==2.0.5
+
