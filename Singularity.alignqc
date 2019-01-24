@@ -23,7 +23,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       git \
       gnuplot \
       graphviz \
-      openjdk-8-jre \
       libbz2-dev \
       libfreetype6-dev \
       libhts-dev \
@@ -34,12 +33,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       python-dev \
       python-pip \
       python-setuptools \
-      python-tk \
-      python-venv \
       r-base \
-      samtools \
-      tabix \
-      vcftools \
       vim \
       wget \
       zlib1g-dev
