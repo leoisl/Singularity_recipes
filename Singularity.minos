@@ -8,6 +8,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %environment
   PATH=/usr/local/bin:$PATH
+  . gram_ve/bin/activate
 
 %post
     apt-get update
@@ -107,7 +108,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     git checkout 4538a8ef7a0614b1a3bfd53cddd816a6d7ce30cd
     export PATH=$PWD/scripts:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
-    #echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
     python3 setup.py install
