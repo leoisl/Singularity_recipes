@@ -108,12 +108,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export PATH=$PWD/scripts:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
     #echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    #echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
     python3 setup.py install
-
-    pip3 install pysam pandas matplotlib seaborn pymummer biopython pandas
-    pip3 install --upgrade matplotlib
-    mkdir -p ~/.matplotlib
-    echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
-    pip3 install --upgrade biopython
