@@ -112,4 +112,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     python3 setup.py test
     python3 setup.py install
 
-
+    pip3 install pysam pandas matplotlib seaborn pymummer biopython pandas
+    pip3 install --upgrade matplotlib
+    mkdir -p ~/.matplotlib
+    echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
+    pip3 install --upgrade biopython
