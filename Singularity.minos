@@ -1,14 +1,11 @@
 Bootstrap: debootstrap
 OSVersion: bionic
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
-
 %help
   A container to hold the vcf adjudicator minos.
   Run `singularity exec minos.simg minos`
-
 %environment
   PATH=/usr/local/bin:$PATH
-
 %post
     apt-get update
     apt-get install -y software-properties-common
@@ -44,7 +41,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
     echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
-
     #================================
     # INSTALL BWA
     #================================
@@ -57,13 +53,11 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export PATH=$PWD:$PATH
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
-
     #================================
     # INSTALL NEXTFLOW
     #================================
     wget -qO- https://get.nextflow.io | bash
     mv nextflow /usr/local/bin
-
     #================================
     # INSTALL MUMMER
     #================================
@@ -75,12 +69,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
     rm MUMmer3.23.tar.gz
- 
-    #================================
-    # INSTALL GRAMTOOLS
-    #================================
-    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools
-    
     #================================
     # INSTALL PYTHON PACKAGES
     #================================
@@ -89,7 +77,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     mkdir -p ~/.matplotlib
     echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
     pip3 install --upgrade biopython
-
     #================================
     # INSTALL MINOS
     #================================
@@ -99,13 +86,18 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     python3 setup.py test
     python3 setup.py install
     cd ..
-    
-    git clone -b fix_mask https://github.com/rmcolq/minos.git
+    #================================
+    # INSTALL GRAMTOOLS
+    #================================
+    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools
+    git clone  https://github.com/rmcolq/minos.git
+    #git clone https://github.com/iqbal-lab-org/minos.git
     cd minos
-    git checkout 4538a8ef7a0614b1a3bfd53cddd816a6d7ce30cd
+    git checkout 0a9842af40bb44184567c287358edfde8dd1feba
+    #git checkout d2d858aa830b1347d6eec65d6f83500d7f71556f
     export PATH=$PWD/scripts:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
-    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
+    #echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    #echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
     python3 setup.py install
