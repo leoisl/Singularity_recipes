@@ -47,6 +47,19 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
     
     #============================================
+    # INSTALL MINIMAP2
+    #============================================
+    VERSION="2.15"
+    wget https://github.com/lh3/minimap2/archive/v"$VERSION".tar.gz
+    tar xzf v"$VERSION".tar.gz
+    rm v"$VERSION".tar.gz
+    cd minimap2-*
+    make
+    export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    cd ..
+    
+    #============================================
     # INSTALL NANOSIM
     #============================================
     git clone https://github.com/karel-brinda/nanosim-h
