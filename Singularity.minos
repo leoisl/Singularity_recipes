@@ -93,7 +93,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     git clone  https://github.com/rmcolq/minos.git
     #git clone https://github.com/iqbal-lab-org/minos.git
     cd minos
-    git checkout 0a9842af40bb44184567c287358edfde8dd1feba
+    git checkout f072f6bd6d041c0bdfa7e1037bbaa0675e02fc78
     #git checkout d2d858aa830b1347d6eec65d6f83500d7f71556f
     export PATH=$PWD/scripts:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
