@@ -97,7 +97,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #git checkout d2d858aa830b1347d6eec65d6f83500d7f71556f
     export PATH=$PWD/scripts:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
-    #echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    #echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
     python3 setup.py install
+
