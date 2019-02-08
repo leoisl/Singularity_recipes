@@ -92,10 +92,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools
     git clone  https://github.com/rmcolq/minos.git
-    #git clone https://github.com/iqbal-lab-org/minos.git
     cd minos
-    git checkout f072f6bd6d041c0bdfa7e1037bbaa0675e02fc78
-    #git checkout d2d858aa830b1347d6eec65d6f83500d7f71556f
     export PATH=$PWD/scripts:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
     echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
