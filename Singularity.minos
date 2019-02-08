@@ -33,6 +33,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       python3-tk \
       python3-venv \
       samtools \
+      seqtk \
       tabix \
       vcftools \
       wget \
