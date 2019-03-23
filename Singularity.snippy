@@ -36,6 +36,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       pkg-config \
       seqtk \
       snp-sites \
+      time \
       wget \
       zlib1g-dev
     export LC_ALL=C.UTF-8
