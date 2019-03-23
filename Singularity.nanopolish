@@ -90,4 +90,3 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export PATH=$PWD/scripts:$PATH
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    
