@@ -25,6 +25,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       python3-dev \
       python3-pip \
       python3-setuptools \
+      time \
       wget \
       zlib1g-dev
     export LC_ALL=C.UTF-8
