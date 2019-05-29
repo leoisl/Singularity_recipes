@@ -22,7 +22,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       graphviz \
       openjdk-8-jre \
       libbz2-dev \
-      libcurl3 \
       libfreetype6-dev \
       libhts-dev \
       liblzma-dev \
