@@ -17,6 +17,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       bcftools \
       build-essential \
       cmake \
+      curl \
       git \
       gnuplot \
       graphviz \
