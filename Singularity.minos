@@ -22,6 +22,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       graphviz \
       openjdk-8-jre \
       libbz2-dev \
+      libcurl3 \
       libfreetype6-dev \
       libhts-dev \
       liblzma-dev \
@@ -114,6 +115,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     # cortex needs the perl/ directory. It expects it to be in the vcftools root,
     # but somehwere between v0.1.9 and v0.1.15 it moved into src/.
     ln -s src/perl/ .
+    export PATH=$PWD/install/bin:$PATH
+    export PERL5LIB=$PWD/install/share/perl/5.24.1/:$PERL5LIB
     echo "export PATH=$(pwd)/install/bin:$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PERL5LIB=$(pwd)/install/share/perl/5.24.1/:$PERL5LIB" >> $SINGULARITY_ENVIRONMENT
     
@@ -125,5 +128,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     bash install.sh
     make NUM_COLS=1 cortex_var
     make NUM_COLS=2 cortex_var
+    export PATH=$PWD/bin:$PWD/scripts/analyse_variants/seq-align/bin:$PATH
+    export PERL5LIB=$PWD/scripts/analyse_variants/bioinf-perl/lib:$PWD/scripts/calling/:$PERL5LIB
     echo "export PATH=$(pwd)/bin:$(pwd)/scripts/analyse_variants/seq-align/bin:$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PERL5LIB=$(pwd)/scripts/analyse_variants/bioinf-perl/lib:$(pwd)/scripts/calling/:$PERL5LIB" >> $SINGULARITY_ENVIRONMENT
