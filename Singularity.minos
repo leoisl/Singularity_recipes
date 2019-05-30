@@ -44,64 +44,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
     echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
-    #================================
-    # INSTALL BWA
-    #================================
-    VERSION="0.7.17"
-    wget https://github.com/lh3/bwa/releases/download/"v"$VERSION/bwa-$VERSION.tar.bz2
-    tar xf bwa-"$VERSION".tar.bz2
-    rm bwa-"$VERSION".tar.bz2
-    cd bwa-*
-    make
-    export PATH=$PWD:$PATH
-    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
-    cd ..
-    #================================
-    # INSTALL NEXTFLOW
-    #================================
-    wget -qO- https://get.nextflow.io | bash
-    mv nextflow /usr/local/bin
-    #================================
-    # INSTALL MUMMER
-    #================================
-    wget https://sourceforge.net/projects/mummer/files/mummer/3.23/MUMmer3.23.tar.gz
-    tar xvf MUMmer3.23.tar.gz
-    cd MUMmer3.23
-    make install
-    export PATH=$PWD:$PATH
-    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
-    cd ..
-    rm MUMmer3.23.tar.gz
-    #================================
-    # INSTALL PYTHON PACKAGES
-    #================================
-    pip3 install pysam pandas matplotlib seaborn pymummer biopython pandas
-    pip3 install --upgrade matplotlib
-    mkdir -p ~/.matplotlib
-    echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
-    pip3 install --upgrade biopython
-    #================================
-    # INSTALL MINOS
-    #================================
-    git clone https://github.com/iqbal-lab-org/cluster_vcf_records.git
-    cd cluster_vcf_records
-    git checkout 46c43d1a5ea104395be7b8de70f1616bdd4dd0cf
-    python3 setup.py test
-    python3 setup.py install
-    cd ..
-    #================================
-    # INSTALL GRAMTOOLS
-    #================================
-    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools@4644135e162ff1ff333f970f1dafd919aa0fc279
-    git clone  https://github.com/rmcolq/minos.git
-    cd minos
-    export PATH=$PWD/scripts:$PATH
-    export PYTHONPATH=$PWD/:$PYTHONPATH
-    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
-    python3 setup.py test
-    python3 setup.py install
-    cd ..
+    
     #=================================
     # INSTALL CORTEX
     #=================================
@@ -132,5 +75,68 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export PERL5LIB=$PWD/scripts/analyse_variants/bioinf-perl/lib:$PWD/scripts/calling/:$PERL5LIB
     echo "export PATH=$(pwd)/bin:$(pwd)/scripts/analyse_variants/seq-align/bin:$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PERL5LIB=$(pwd)/scripts/analyse_variants/bioinf-perl/lib:$(pwd)/scripts/calling/:$PERL5LIB" >> $SINGULARITY_ENVIRONMENT
-
-
+    cd ..
+    
+    #================================
+    # INSTALL BWA
+    #================================
+    VERSION="0.7.17"
+    wget https://github.com/lh3/bwa/releases/download/"v"$VERSION/bwa-$VERSION.tar.bz2
+    tar xf bwa-"$VERSION".tar.bz2
+    rm bwa-"$VERSION".tar.bz2
+    cd bwa-*
+    make
+    export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    cd ..
+    
+    #================================
+    # INSTALL NEXTFLOW
+    #================================
+    wget -qO- https://get.nextflow.io | bash
+    mv nextflow /usr/local/bin
+    
+    #================================
+    # INSTALL MUMMER
+    #================================
+    wget https://sourceforge.net/projects/mummer/files/mummer/3.23/MUMmer3.23.tar.gz
+    tar xvf MUMmer3.23.tar.gz
+    cd MUMmer3.23
+    make install
+    export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    cd ..
+    rm MUMmer3.23.tar.gz
+    
+    #================================
+    # INSTALL PYTHON PACKAGES
+    #================================
+    pip3 install pysam pandas matplotlib seaborn pymummer biopython pandas
+    pip3 install --upgrade matplotlib
+    mkdir -p ~/.matplotlib
+    echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
+    pip3 install --upgrade biopython
+    
+    #================================
+    # INSTALL CLUSTER_VCF_RECORDS
+    #================================
+    git clone https://github.com/iqbal-lab-org/cluster_vcf_records.git
+    cd cluster_vcf_records
+    git checkout 46c43d1a5ea104395be7b8de70f1616bdd4dd0cf
+    python3 setup.py test
+    python3 setup.py install
+    cd ..
+    
+    #================================
+    # INSTALL GRAMTOOLS AND MINOS
+    #================================
+    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools@4644135e162ff1ff333f970f1dafd919aa0fc279
+    git clone  https://github.com/rmcolq/minos.git
+    cd minos
+    export PATH=$PWD/scripts:$PATH
+    export PYTHONPATH=$PWD/:$PYTHONPATH
+    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
+    python3 setup.py test
+    python3 setup.py install
+    cd ..
