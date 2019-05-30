@@ -111,11 +111,12 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     # INSTALL PYTHON PACKAGES
     #================================
-    pip3 install pysam pandas matplotlib seaborn pymummer biopython pandas
+    pip3 install pysam pandas matplotlib seaborn pymummer biopython pandas wheel
     pip3 install --upgrade matplotlib
     mkdir -p ~/.matplotlib
     echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
     pip3 install --upgrade biopython
+    pip3 install pip3 --upgrade
     
     #================================
     # INSTALL CLUSTER_VCF_RECORDS
@@ -130,7 +131,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     # INSTALL GRAMTOOLS AND MINOS
     #================================
-    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools@4644135e162ff1ff333f970f1dafd919aa0fc279
+    pip3 install -vvv --process-dependency-links --allow-all-external wheel git+https://github.com/iqbal-lab-org/gramtools@4644135e162ff1ff333f970f1dafd919aa0fc279
     git clone  https://github.com/rmcolq/minos.git
     cd minos
     export PATH=$PWD/scripts:$PATH
