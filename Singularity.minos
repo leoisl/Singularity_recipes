@@ -87,16 +87,3 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     python3 setup.py test
     python3 setup.py install
     cd ..
-    #================================
-    # INSTALL GRAMTOOLS
-    #================================
-    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools@4644135e162ff1ff333f970f1dafd919aa0fc279
-    git clone  https://github.com/rmcolq/minos.git
-    cd minos
-    export PATH=$PWD/scripts:$PATH
-    export PYTHONPATH=$PWD/:$PYTHONPATH
-    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
-    python3 setup.py test
-    python3 setup.py install
-
