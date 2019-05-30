@@ -132,3 +132,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export PERL5LIB=$PWD/scripts/analyse_variants/bioinf-perl/lib:$PWD/scripts/calling/:$PERL5LIB
     echo "export PATH=$(pwd)/bin:$(pwd)/scripts/analyse_variants/seq-align/bin:$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PERL5LIB=$(pwd)/scripts/analyse_variants/bioinf-perl/lib:$(pwd)/scripts/calling/:$PERL5LIB" >> $SINGULARITY_ENVIRONMENT
+
+
