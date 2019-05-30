@@ -59,6 +59,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     wget -qO- https://get.nextflow.io | bash
     mv nextflow /usr/local/bin
+    export PATH=/usr/local/bin:$PATH
     #================================
     # INSTALL MUMMER
     #================================
@@ -79,7 +80,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     ./configure --prefix $PWD/install
     make
     make install
-
     # cortex needs the perl/ directory. It expects it to be in the vcftools root,
     # but somehwere between v0.1.9 and v0.1.15 it moved into src/.
     ln -s src/perl/ .
@@ -87,8 +87,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export PERL5LIB=$PWD/install/share/perl/5.24.1/:$PERL5LIB
     echo "export PATH=$(pwd)/install/bin:$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PERL5LIB=$(pwd)/install/share/perl/5.24.1/:$PERL5LIB" >> $SINGULARITY_ENVIRONMENT
-    
     cd ..
+    rm vcftools-0.1.15.tar.gz
+    
     wget --no-check-certificate -O cortex.tar.gz https://github.com/iqbal-lab/cortex/archive/master.tar.gz
     tar xf cortex.tar.gz
     mv cortex-master cortex
@@ -100,6 +101,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export PERL5LIB=$PWD/scripts/analyse_variants/bioinf-perl/lib:$PWD/scripts/calling/:$PERL5LIB
     echo "export PATH=$(pwd)/bin:$(pwd)/scripts/analyse_variants/seq-align/bin:$PATH" >> $SINGULARITY_ENVIRONMENT
     echo "export PERL5LIB=$(pwd)/scripts/analyse_variants/bioinf-perl/lib:$(pwd)/scripts/calling/:$PERL5LIB" >> $SINGULARITY_ENVIRONMENT
+    cd ..
+    rm cortex.tar.gz
     #================================
     # INSTALL PYTHON PACKAGES
     #================================
@@ -116,6 +119,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     git checkout 0db26af36b6da97a7361364457d2152dc756055c
     python3 setup.py test
     python3 setup.py install
+    cd ..
     #================================
     # INSTALL GRAMTOOLS
     #================================
