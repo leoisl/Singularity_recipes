@@ -109,10 +109,22 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
     pip3 install --upgrade biopython
     #================================
-    # INSTALL MINOS
+    # INSTALL CLUSTER_VCF_RECORDS
     #================================
     git clone https://github.com/iqbal-lab-org/cluster_vcf_records.git
     cd cluster_vcf_records
     git checkout 0db26af36b6da97a7361364457d2152dc756055c
+    python3 setup.py test
+    python3 setup.py install
+    #================================
+    # INSTALL GRAMTOOLS
+    #================================
+    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools@4644135e162ff1ff333f970f1dafd919aa0fc279
+    git clone  https://github.com/rmcolq/minos.git
+    cd minos
+    export PATH=$PWD/scripts:$PATH
+    export PYTHONPATH=$PWD/:$PYTHONPATH
+    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
     python3 setup.py install
