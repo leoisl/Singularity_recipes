@@ -119,7 +119,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     # INSTALL GRAMTOOLS
     #================================
-    pip3 install -vvv --process-dependency-links wheel git+https://github.com/iqbal-lab-org/gramtools@4644135e162ff1ff333f970f1dafd919aa0fc279
+    pip3 install -vvv --process-dependency-links wheel git+https://github.com/rmcolq/gramtools
     git clone  https://github.com/rmcolq/minos.git
     cd minos
     export PATH=$PWD/scripts:$PATH
