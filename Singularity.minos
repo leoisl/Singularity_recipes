@@ -139,3 +139,4 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py install
     python3 setup.py test
+
