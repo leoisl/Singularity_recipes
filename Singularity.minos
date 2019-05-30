@@ -70,10 +70,40 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
     rm MUMmer3.23.tar.gz
+    #=================================
+    # INSTALL CORTEX
+    #=================================
+    wget https://github.com/vcftools/vcftools/releases/download/v0.1.15/vcftools-0.1.15.tar.gz
+    tar xf vcftools-0.1.15.tar.gz
+    cd vcftools-0.1.15
+    ./configure --prefix $PWD/install
+    make
+    make install
+
+    # cortex needs the perl/ directory. It expects it to be in the vcftools root,
+    # but somehwere between v0.1.9 and v0.1.15 it moved into src/.
+    ln -s src/perl/ .
+    export PATH=$PWD/install/bin:$PATH
+    export PERL5LIB=$PWD/install/share/perl/5.24.1/:$PERL5LIB
+    echo "export PATH=$(pwd)/install/bin:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PERL5LIB=$(pwd)/install/share/perl/5.24.1/:$PERL5LIB" >> $SINGULARITY_ENVIRONMENT
+    
+    cd ..
+    wget --no-check-certificate -O cortex.tar.gz https://github.com/iqbal-lab/cortex/archive/master.tar.gz
+    tar xf cortex.tar.gz
+    mv cortex-master cortex
+    cd cortex/
+    bash install.sh
+    make NUM_COLS=1 cortex_var
+    make NUM_COLS=2 cortex_var
+    export PATH=$PWD/bin:$PWD/scripts/analyse_variants/seq-align/bin:$PATH
+    export PERL5LIB=$PWD/scripts/analyse_variants/bioinf-perl/lib:$PWD/scripts/calling/:$PERL5LIB
+    echo "export PATH=$(pwd)/bin:$(pwd)/scripts/analyse_variants/seq-align/bin:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PERL5LIB=$(pwd)/scripts/analyse_variants/bioinf-perl/lib:$(pwd)/scripts/calling/:$PERL5LIB" >> $SINGULARITY_ENVIRONMENT
     #================================
     # INSTALL PYTHON PACKAGES
     #================================
-    pip3 install pysam pandas matplotlib seaborn pymummer biopython pandas
+    pip3 install python-dateutil requests pysam pyfastaq numpy openpyxl pyflakes scipy XlsxWriter matplotlib seaborn pymummer biopython pandas 
     pip3 install --upgrade matplotlib
     mkdir -p ~/.matplotlib
     echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
@@ -83,7 +113,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     git clone https://github.com/iqbal-lab-org/cluster_vcf_records.git
     cd cluster_vcf_records
-    git checkout 46c43d1a5ea104395be7b8de70f1616bdd4dd0cf
+    git checkout 0db26af36b6da97a7361364457d2152dc756055c
     python3 setup.py test
     python3 setup.py install
-    cd ..
