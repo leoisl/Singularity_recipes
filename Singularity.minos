@@ -116,7 +116,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     mkdir -p ~/.matplotlib
     echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
     pip3 install --upgrade biopython
-    pip3 install pip3 --upgrade
     
     #================================
     # INSTALL CLUSTER_VCF_RECORDS
