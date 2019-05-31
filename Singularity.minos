@@ -105,7 +105,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     # INSTALL PYTHON PACKAGES
     #================================
-    pip3 install python-dateutil requests pysam pyfastaq numpy openpyxl pyflakes scipy XlsxWriter matplotlib seaborn pymummer biopython pandas 
+    pip3 install pysam pyfastaq numpy matplotlib seaborn pymummer biopython pandas
     pip3 install --upgrade matplotlib
     mkdir -p ~/.matplotlib
     echo -e "image.cmap : gray\nimage.interpolation : none" > ~/.matplotlib/matplotlibrc
@@ -129,7 +129,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd minos
     export PATH=$PWD/scripts:$PATH
     export PYTHONPATH=$PWD/:$PYTHONPATH
-    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
-    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
     python3 setup.py test
     python3 setup.py install
+    echo "export PATH=$(pwd)/scripts:$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PYTHONPATH=$(pwd)/:$PYTHONPATH" >> $SINGULARITY_ENVIRONMENT
