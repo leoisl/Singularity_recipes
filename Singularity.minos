@@ -115,7 +115,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     git clone https://github.com/iqbal-lab-org/cluster_vcf_records.git
     cd cluster_vcf_records
-    git checkout 0db26af36b6da97a7361364457d2152dc756055c
+    git checkout c99a1db6217b9e8a5b1fa91fdcbaf32fa89629c3
     python3 setup.py test
     python3 setup.py install
     cd ..
