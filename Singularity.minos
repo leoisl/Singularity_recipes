@@ -89,9 +89,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     cd ..
     rm vcftools-0.1.15.tar.gz
     
-    wget --no-check-certificate -O cortex.tar.gz https://github.com/iqbal-lab/cortex/archive/master.tar.gz
+    wget --no-check-certificate -O cortex.tar.gz https://github.com/iqbal-lab/cortex/archive/v1.0.5.21.tar.gz
     tar xf cortex.tar.gz
-    mv cortex-master cortex
+    mv cortex-1.0.5.21 cortex
     cd cortex/
     bash install.sh
     make NUM_COLS=1 cortex_var
