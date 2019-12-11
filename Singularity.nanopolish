@@ -81,7 +81,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #================================
     # INSTALL NANOPOLISH
     #================================
-    VERSION="0.10.1"
+    VERSION="0.11.2"
     git clone --recursive https://github.com/jts/nanopolish.git
     cd nanopolish
     git checkout v"$VERSION"
