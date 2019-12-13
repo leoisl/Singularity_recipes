@@ -1,0 +1,68 @@
+Bootstrap: debootstrap
+OSVersion: bionic
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+%help
+  A container to hold the variant calling and polishing tool nanopolish.
+  Run `singularity exec nanopolish.simg nanopolish`
+
+%environment
+  PATH=/usr/local/bin:$PATH
+
+%post
+    apt-get update
+    apt-get install -y software-properties-common
+    apt-add-repository universe
+    apt-get update
+    apt-get install -y \
+      build-essential \
+      bzip2 \
+      libbz2-dev \
+      libncurses5-dev \
+      liblzma-dev \
+      make \
+      perl-base \
+      procps \
+      python3-dev \
+      python3-pip \
+      python3-setuptools \
+      sed \
+      tabix \
+      wget \
+      zlib1g-dev
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
+    echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
+    echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
+
+    #================================
+    # INSTALL SAMTOOLS
+    #================================
+    VERSION="1.9"
+    wget https://github.com/samtools/samtools/releases/download/"$VERSION"/samtools-"$VERSION".tar.bz2
+    tar xjf samtools-"$VERSION".tar.bz2
+    rm samtools*.tar.bz2
+    cd samtools*
+    ./configure
+    make
+    make install
+    cd ..
+    rm -rf samtools-*
+
+    #============================================
+    # INSTALL MINIMAP2
+    #============================================
+    VERSION="2.17"
+    wget https://github.com/lh3/minimap2/archive/v"$VERSION".tar.gz
+    tar xzf v"$VERSION".tar.gz
+    rm v"$VERSION".tar.gz
+    cd minimap2-*
+    make
+    export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    cd ..
+
+    #================================
+    # INSTALL MEDAKA
+    #================================
+    pip3 install medaka
