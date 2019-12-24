@@ -66,3 +66,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     # INSTALL MEDAKA
     #================================
     pip3 install medaka
+
+
