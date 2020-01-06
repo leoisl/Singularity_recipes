@@ -80,7 +80,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #============================================
     # INSTALL SNIPPY
     #============================================
-    VERSION="4.3.6"
+    VERSION="4.4.5"
     wget https://github.com/tseemann/snippy/archive/v"$VERSION".tar.gz
     tar xzf v$VERSION.tar.gz
     rm v$VERSION.tar.gz
