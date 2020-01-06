@@ -16,9 +16,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get update
     apt-get install -y \
       build-essential \
-      bzip2 \
       libbz2-dev \
       libncurses5-dev \
+      libcurl4-gnutls-dev \
       liblzma-dev \
       make \
       perl-base \
@@ -30,13 +30,26 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
       python3-pip \
       python3-setuptools \
       sed \
-      tabix \
       wget \
       zlib1g-dev
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
     echo 'export LC_ALL=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
     echo 'export LANG=C.UTF-8' >> $SINGULARITY_ENVIRONMENT
+
+    #================================
+    # INSTALL TABIX AND BGZIP2
+    #================================
+    VERSION="1.9"
+    wget https://github.com/samtools/htslib/releases/download/"$VERSION"/htslib-"$VERSION".tar.bz2
+    tar xjf htslib-"$VERSION".tar.bz2
+    rm htslib-*.tar.bz2
+    cd htslib*
+    ./configure
+    make
+    make install
+    cd ..
+    rm -rf htslib-*
 
     #================================
     # INSTALL SAMTOOLS
