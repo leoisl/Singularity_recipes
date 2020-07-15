@@ -77,6 +77,18 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     export PATH=$PWD:$PATH
     echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
+    
+    #============================================
+    # INSTALL BCFTOOLS
+    #============================================
+    VERSION="1.10.2"
+    wget https://github.com/samtools/bcftools/releases/download/"$VERSION"/bcftools-"$VERSION".tar.bz2
+    tar -xf bcftools-"$VERSION".tar.bz2
+    rm bcftools-"$VERSION".tar.bz2
+    ./configure && make
+    export PATH=$PWD:$PATH
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    cd ..
 
     #================================
     # INSTALL MEDAKA
