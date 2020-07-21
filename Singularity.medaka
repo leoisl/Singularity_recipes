@@ -3,8 +3,8 @@ OSVersion: bionic
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %help
-  A container to hold the variant calling and polishing tool nanopolish.
-  Run `singularity exec nanopolish.simg nanopolish`
+  A container to hold the variant calling tool medaka.
+  Run `singularity exec medaka.simg medaka`
 
 %environment
   PATH=/usr/local/bin:$PATH
