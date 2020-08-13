@@ -4,7 +4,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %help
   A container to hold Snippy variant caller.
-  Run `singularity exec canu.simg snippy`
+  Run `singularity exec snippy.simg snippy`
 
 %environment
   PATH=/usr/local/bin:$PATH
