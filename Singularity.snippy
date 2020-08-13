@@ -19,6 +19,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get install -y \
       bioperl \
       build-essential \
+      cmake \
       curl \
       git \
       graphviz \
