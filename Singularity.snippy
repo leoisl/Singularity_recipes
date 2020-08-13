@@ -50,8 +50,11 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #============================================
     git clone --recursive git://github.com/ekg/freebayes.git
     cd freebayes
+    git checkout 2c1e395b9bf2565ae69fe61061eb28387f56637e
     make
-    make install
+    make test
+    cd bin
+    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
     cd ..
     
     #============================================
@@ -72,6 +75,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #============================================
     git clone https://github.com/atks/vt.git
     cd vt
+    git checkout 2187ff6347086e38f71bd9f8ca622cd7dcfbb40c
     make
     make test
     export PATH=$PWD:$PATH
