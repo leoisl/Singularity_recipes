@@ -3,8 +3,8 @@ OSVersion: bionic
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %help
-  A container to hold the assembler canu.
-  Run `singularity exec canu.simg canu`
+  A container to hold Snippy variant caller.
+  Run `singularity exec canu.simg snippy`
 
 %environment
   PATH=/usr/local/bin:$PATH
@@ -80,7 +80,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #============================================
     # INSTALL SNIPPY
     #============================================
-    VERSION="4.4.5"
+    VERSION="4.6.0"
     wget https://github.com/tseemann/snippy/archive/v"$VERSION".tar.gz
     tar xzf v$VERSION.tar.gz
     rm v$VERSION.tar.gz
